@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  signal,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NAV_LINKS } from '../../core/data/navigation.data';
 import { SITE_INFO } from '../../core/data/site-info.data';
@@ -15,6 +22,7 @@ export class Header {
   protected readonly navLinks = NAV_LINKS;
   protected readonly site = SITE_INFO;
   protected readonly themeService = inject(ThemeService);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
   /** Indica si el menú móvil está abierto. */
   protected readonly menuOpen = signal(false);
@@ -32,5 +40,23 @@ export class Header {
   @HostListener('window:scroll')
   protected onScroll(): void {
     this.scrolled.set(window.scrollY > 20);
+    // Al desplazar la página cerramos el menú móvil para que no quede flotando.
+    if (this.menuOpen()) {
+      this.closeMenu();
+    }
+  }
+
+  /** Cierra el menú móvil al hacer clic fuera del header. */
+  @HostListener('document:click', ['$event'])
+  protected onDocumentClick(event: MouseEvent): void {
+    if (this.menuOpen() && !this.host.nativeElement.contains(event.target as Node)) {
+      this.closeMenu();
+    }
+  }
+
+  /** Cierra el menú móvil con la tecla Escape. */
+  @HostListener('document:keydown.escape')
+  protected onEscape(): void {
+    this.closeMenu();
   }
 }

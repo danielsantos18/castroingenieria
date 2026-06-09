@@ -6,12 +6,18 @@
   inset: 0;
   z-index: $z-modal;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: space('md');
+  padding: 0;
   background: rgba(13, 19, 32, 0.6);
   backdrop-filter: blur(4px);
   animation: team-modal-overlay-in 0.25s ease forwards;
+
+  // A partir de tablet, el modal se centra en pantalla con margen.
+  @include respond-to('sm') {
+    align-items: center;
+    padding: space('md');
+  }
 
   &--leaving {
     animation: team-modal-overlay-out 0.2s ease forwards;
@@ -27,13 +33,21 @@
   position: relative;
   width: 100%;
   max-width: 560px;
-  max-height: calc(100vh - #{space('lg')});
+  // Hoja inferior en móvil: no supera el alto visible (dvh evita la barra del navegador).
+  max-height: 92vh;
+  max-height: 92dvh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background-color: var(--surface-card);
   border: 1px solid var(--border);
-  border-radius: $radius-lg;
+  border-radius: $radius-lg $radius-lg 0 0;
   box-shadow: var(--shadow-lg);
   animation: team-modal-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @include respond-to('sm') {
+    max-height: calc(100vh - #{space('lg')});
+    border-radius: $radius-lg;
+  }
 
   // Franja de acento de marca en el borde superior.
   &::before {
@@ -43,6 +57,7 @@
     top: 0;
     height: 4px;
     background: linear-gradient(90deg, $color-primary, $color-accent);
+    border-radius: $radius-lg $radius-lg 0 0;
   }
 }
 
@@ -75,20 +90,31 @@
 // -- Encabezado ---------------------------------------------------------------
 .team-modal__header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: space('md');
-  padding: space('lg') space('lg') space('md');
+  text-align: center;
+  gap: space('sm');
+  padding: space('lg') space('md') space('md');
 
   @include respond-to('sm') {
-    padding-right: space('xl');
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: space('md');
+    padding: space('lg') space('xl') space('md') space('lg');
   }
 }
 
 .team-modal__avatar {
   @include flex-center;
   flex-shrink: 0;
-  width: 96px;
-  height: 96px;
+  width: 84px;
+  height: 84px;
+
+  @include respond-to('sm') {
+    width: 96px;
+    height: 96px;
+  }
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(135deg, $color-primary, $color-primary-light);
@@ -115,9 +141,13 @@
 }
 
 .team-modal__name {
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   line-height: $line-height-heading;
   color: var(--text-heading);
+
+  @include respond-to('sm') {
+    font-size: 1.45rem;
+  }
 }
 
 .team-modal__role {
@@ -139,7 +169,11 @@
 
 // -- Cuerpo -------------------------------------------------------------------
 .team-modal__body {
-  padding: 0 space('lg') space('lg');
+  padding: 0 space('md') space('lg');
+
+  @include respond-to('sm') {
+    padding: 0 space('lg') space('lg');
+  }
 }
 
 .team-modal__bio {
@@ -188,9 +222,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  width: fit-content;
+  max-width: 100%;
   color: var(--text-body);
   text-decoration: none;
+  overflow-wrap: anywhere;
   transition: color $transition-base;
 
   svg {
