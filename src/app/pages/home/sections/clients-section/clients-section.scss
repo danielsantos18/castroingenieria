@@ -1,0 +1,80 @@
+@use 'abstracts' as *;
+
+.clients-marquee {
+  position: relative;
+  overflow: hidden;
+  // Desvanece los bordes laterales para un acabado elegante.
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  &:hover .clients-marquee__track {
+    animation-play-state: paused;
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: clients-marquee 32s linear infinite;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    // El margen (no gap) garantiza que el bucle al -50% sea perfecto.
+    margin-right: 1.5rem;
+    width: 190px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    box-shadow: var(--shadow-sm);
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: $shadow-md;
+    }
+  }
+}
+
+@keyframes clients-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// Sin animación: muestra los logos en una rejilla centrada.
+@media (prefers-reduced-motion: reduce) {
+  .clients-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+
+    &__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      width: auto;
+      padding-inline: $container-padding;
+    }
+
+    &__item {
+      margin-right: 0;
+    }
+  }
+}

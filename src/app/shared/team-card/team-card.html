@@ -1,0 +1,20 @@
+<article
+  class="team-card"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'Ver perfil de ' + member().name"
+  (click)="open()"
+  (keydown.enter)="open()"
+  (keydown.space)="$event.preventDefault(); open()"
+>
+  <div class="team-card__avatar">
+    @if (member().photo) {
+      <img [src]="member().photo" [alt]="member().name" loading="lazy" />
+    } @else {
+      <span class="team-card__initials" aria-hidden="true">{{ initials() }}</span>
+    }
+  </div>
+  <h3 class="team-card__name">{{ member().name }}</h3>
+  <p class="team-card__role">{{ member().role }}</p>
+  <span class="team-card__cta" aria-hidden="true">Ver perfil</span>
+</article>

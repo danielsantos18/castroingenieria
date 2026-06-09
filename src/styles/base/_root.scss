@@ -1,0 +1,71 @@
+@use '../abstracts' as *;
+
+// Custom properties expuestas para uso en runtime / theming desde componentes.
+:root {
+  // -- Marca (constante en ambos temas) --------------------------------------
+  --color-primary: #{$color-primary};
+  --color-primary-dark: #{$color-primary-dark};
+  --color-primary-light: #{$color-primary-light};
+  --color-accent: #{$color-accent};
+  --color-accent-dark: #{$color-accent-dark};
+
+  // -- Tokens semánticos de tema (claro por defecto) -------------------------
+  // Superficies
+  --surface: #{$color-white}; // fondo base de la página
+  --surface-alt: #{$color-bg-alt}; // secciones alternas
+  --surface-card: #{$color-white}; // tarjetas y paneles
+  // Texto
+  --text-heading: #{$color-heading};
+  --text-body: #{$color-text};
+  --text-muted: #{$color-muted};
+  --text-brand: #{$color-primary}; // texto de marca sobre superficies
+  // Bordes
+  --border: #{$color-border};
+
+  // -- Compatibilidad (mantengo nombres previos) -----------------------------
+  --color-heading: var(--text-heading);
+  --color-text: var(--text-body);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-bg: var(--surface);
+  --color-bg-alt: var(--surface-alt);
+  --color-white: #{$color-white};
+
+  // Tipografía
+  --font-body: #{$font-body};
+  --font-heading: #{$font-heading};
+
+  // Radios y sombras
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  // Transición base
+  --transition-base: #{$transition-base};
+
+  // Layout
+  --container-max: #{$container-max};
+
+  color-scheme: light;
+}
+
+// -- Tema oscuro -------------------------------------------------------------
+[data-theme='dark'] {
+  --surface: #0f1622;
+  --surface-alt: #161f2e;
+  --surface-card: #1a2434;
+  --text-heading: #eef2f8;
+  --text-body: #b3bccb;
+  --text-muted: #8893a5;
+  --text-brand: #7aa2ff;
+  --border: #29354c;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}

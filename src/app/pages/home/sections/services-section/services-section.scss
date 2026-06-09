@@ -1,0 +1,20 @@
+@use 'abstracts' as *;
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('md');
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.services-section__cta {
+  margin-top: space('lg');
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+<section class="section" id="clientes">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Confían en nosotros</span>
+      <h2 class="section-title">Algunos de nuestros clientes satisfechos</h2>
+      <p class="section-subtitle">
+        Hemos colaborado con empresas de renombre demostrando calidad, cumplimiento y soluciones
+        efectivas.
+      </p>
+    </header>
+  </div>
+
+  <div class="clients-marquee" appReveal aria-label="Logotipos de clientes">
+    <div class="clients-marquee__track">
+      @for (client of marquee; track $index) {
+        <div class="clients-marquee__item" [attr.aria-hidden]="$index >= clients.length ? 'true' : null">
+          <img [src]="client.logo" [alt]="client.name" loading="lazy" />
+        </div>
+      }
+    </div>
+  </div>
+</section>

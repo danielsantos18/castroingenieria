@@ -1,0 +1,75 @@
+@use 'abstracts' as *;
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+
+    .service-card__img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--surface-alt);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: space('xs');
+    padding: space('md');
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    color: var(--text-heading);
+  }
+
+  &__summary {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: space('xs');
+    font-weight: $font-weight-medium;
+    color: var(--text-brand);
+
+    span {
+      transition: transform $transition-base;
+    }
+
+    &:hover {
+      color: $color-accent;
+
+      span {
+        transform: translateX(4px);
+      }
+    }
+  }
+}

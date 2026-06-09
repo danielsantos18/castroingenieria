@@ -1,0 +1,17 @@
+@use 'abstracts' as *;
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: space('md');
+
+  // Cada tarjeta toma un ancho cómodo y queda centrada,
+  // sin importar cuántos integrantes haya. display:flex permite que la
+  // tarjeta interior crezca y todas queden de la misma altura.
+  app-team-card {
+    display: flex;
+    flex: 0 1 300px;
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,21 @@
+<section class="section" id="servicios">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Lo que hacemos</span>
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <p class="section-subtitle">
+        Soluciones integrales de ingeniería y construcción para el sector industrial.
+      </p>
+    </header>
+
+    <div class="services-grid">
+      @for (service of services; track service.slug; let i = $index) {
+        <app-service-card [service]="service" appReveal [revealDelay]="i * 90" />
+      }
+    </div>
+
+    <div class="services-section__cta">
+      <a class="btn btn--outline" routerLink="/servicios">Ver todos los servicios</a>
+    </div>
+  </div>
+</section>

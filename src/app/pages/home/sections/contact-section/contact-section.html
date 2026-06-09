@@ -1,0 +1,102 @@
+<section class="section" id="contacto">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Contáctanos</span>
+      <h2 class="section-title">¡Hablemos de tu próximo proyecto!</h2>
+      <p class="section-subtitle">
+        Cuéntanos tu idea y nuestro equipo la convierte en realidad con calidad, experiencia y
+        dedicación.
+      </p>
+    </header>
+
+    <div class="contact">
+      <!-- Información de contacto -->
+      <div class="contact__info" appReveal>
+        <ul class="contact__list">
+          <li class="contact__item">
+            <span class="contact__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+              </svg>
+            </span>
+            <div>
+              <span class="contact__label">Dirección</span>
+              <p class="contact__value">{{ site.address }}</p>
+            </div>
+          </li>
+
+          <li class="contact__item">
+            <span class="contact__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z" />
+              </svg>
+            </span>
+            <div>
+              <span class="contact__label">Teléfono</span>
+              <p class="contact__value">
+                <a [href]="'tel:+' + site.phoneRaw">{{ site.phone }}</a>
+              </p>
+            </div>
+          </li>
+
+          <li class="contact__item">
+            <span class="contact__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 7L4 6.5V8l8 4.5L20 8V6.5L12 11z" />
+              </svg>
+            </span>
+            <div>
+              <span class="contact__label">Correo</span>
+              <p class="contact__value">
+                <a [href]="'mailto:' + site.email">{{ site.email }}</a>
+              </p>
+              <p class="contact__value">
+                <a [href]="'mailto:' + site.emailAlt">{{ site.emailAlt }}</a>
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <a class="btn btn--accent contact__whatsapp" [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.24.68-1.42 1.32-1.95 1.37-.5.05-.97.24-3.27-.68-2.76-1.09-4.5-3.92-4.64-4.1-.13-.18-1.1-1.47-1.1-2.8 0-1.32.7-1.97.94-2.24.24-.27.53-.34.7-.34l.5.01c.16 0 .38-.06.59.45.24.58.8 2 .87 2.14.07.14.12.31.02.5-.1.18-.15.3-.29.46l-.43.5c-.14.14-.29.3-.12.58.16.27.73 1.2 1.56 1.95 1.07.95 1.97 1.25 2.25 1.39.28.14.44.12.6-.07.16-.18.69-.8.87-1.08.18-.27.36-.22.6-.13.25.09 1.57.74 1.84.87.27.14.45.2.51.32.07.12.07.66-.17 1.3z" />
+          </svg>
+          Escríbenos por WhatsApp
+        </a>
+
+        <div class="contact__socials">
+          <span class="contact__socials-label">Síguenos</span>
+          <ul class="socials">
+            @for (social of socials; track social.label; let i = $index) {
+              <li appReveal [revealDelay]="i * 80">
+                <a
+                  class="socials__btn"
+                  [class]="'socials__btn--' + social.icon"
+                  [href]="social.url"
+                  [attr.aria-label]="social.label"
+                  [attr.target]="social.icon === 'whatsapp' || social.icon === 'facebook' || social.icon === 'instagram' ? '_blank' : null"
+                  rel="noopener"
+                >
+                  <app-social-icon [icon]="social.icon" />
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mapa -->
+      <div class="contact__map" appReveal [revealDelay]="150">
+        <iframe
+          src="https://www.google.com/maps?q=Calle%2012%20%236-26%2C%20Pasacaballos%2C%20Cartagena%2C%20Bol%C3%ADvar%2C%20Colombia&z=15&output=embed"
+          title="Ubicación de Castros Ingeniería en Pasacaballos, Cartagena"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

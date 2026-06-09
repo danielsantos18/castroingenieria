@@ -1,0 +1,27 @@
+// =============================================================================
+// Hoja de estilos global — Castro Ingeniería SAS
+// Arquitectura por capas (inspirada en ITCSS / 7-1):
+//   abstracts   → variables y mixins (no generan CSS)
+//   base        → reset, root vars, tipografía
+//   layout      → contenedores y secciones
+//   components  → componentes globales reutilizables (botones, ...)
+//   utilities   → clases atómicas de ayuda
+// Los partials viven en src/styles/. Los componentes Angular reutilizan los
+// tokens/mixins con `@use 'abstracts' as *;` (ver includePaths en angular.json).
+// =============================================================================
+
+// -- Base ---------------------------------------------------------------------
+@use 'base/reset';
+@use 'base/root';
+@use 'base/typography';
+
+// -- Layout -------------------------------------------------------------------
+@use 'layout/container';
+@use 'layout/section';
+
+// -- Componentes globales -----------------------------------------------------
+@use 'components/buttons';
+@use 'components/reveal';
+
+// -- Utilidades ---------------------------------------------------------------
+@use 'utilities/utilities';

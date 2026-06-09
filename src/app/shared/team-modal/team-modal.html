@@ -1,0 +1,115 @@
+<div
+  class="team-modal"
+  [class.team-modal--leaving]="leaving()"
+  (click)="onBackdropClick($event)"
+>
+  <div
+    class="team-modal__panel"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-labelledby]="'team-modal-name'"
+  >
+    <button
+      type="button"
+      class="team-modal__close"
+      aria-label="Cerrar"
+      (click)="requestClose()"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path
+          d="M6 6l12 12M18 6L6 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
+    <header class="team-modal__header">
+      <div class="team-modal__avatar">
+        @if (member().photo) {
+          <img [src]="member().photo" [alt]="member().name" />
+        } @else {
+          <span class="team-modal__initials" aria-hidden="true">{{ initials() }}</span>
+        }
+      </div>
+      <div class="team-modal__heading">
+        <h2 id="team-modal-name" class="team-modal__name">{{ member().name }}</h2>
+        <p class="team-modal__role">{{ member().role }}</p>
+        @if (member().experience) {
+          <span class="team-modal__badge">{{ member().experience }}</span>
+        }
+      </div>
+    </header>
+
+    <div class="team-modal__body">
+      @if (member().bio) {
+        <p class="team-modal__bio">{{ member().bio }}</p>
+      }
+
+      @if (member().specialties?.length) {
+        <div class="team-modal__block">
+          <h3 class="team-modal__block-title">Especialidades</h3>
+          <ul class="team-modal__chips">
+            @for (item of member().specialties; track item) {
+              <li class="team-modal__chip">{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+
+      @if (member().email || member().phone || member().linkedin) {
+        <div class="team-modal__block">
+          <h3 class="team-modal__block-title">Contacto</h3>
+          <div class="team-modal__contact">
+            @if (member().email) {
+              <a class="team-modal__contact-link" [href]="'mailto:' + member().email">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path
+                    d="M3 5h18v14H3z M3 6l9 7 9-7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>{{ member().email }}</span>
+              </a>
+            }
+            @if (member().phone) {
+              <a class="team-modal__contact-link" [href]="'tel:' + member().phone">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path
+                    d="M4 4h4l2 5-2.5 1.5a11 11 0 005 5L16 13l5 2v4a2 2 0 01-2 2A16 16 0 014 6a2 2 0 012-2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>{{ member().phone }}</span>
+              </a>
+            }
+            @if (member().linkedin) {
+              <a
+                class="team-modal__contact-link"
+                [href]="member().linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path
+                    d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.4 8.75 21 11.06 21 14v7h-4v-6.2c0-1.48-.03-3.39-2.07-3.39-2.07 0-2.39 1.62-2.39 3.29V21H9z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

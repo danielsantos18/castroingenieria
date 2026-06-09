@@ -1,0 +1,14 @@
+<section class="cta">
+  <div class="container cta__inner">
+    <div class="cta__text" appReveal>
+      <h2 class="cta__title">¿Listo para materializar tu próximo proyecto?</h2>
+      <p class="cta__subtitle">
+        Cuéntanos tu idea y nuestro equipo te acompañará desde el diseño hasta la entrega.
+      </p>
+    </div>
+    <div class="cta__actions" appReveal [revealDelay]="150">
+      <a class="btn btn--accent btn--lg" routerLink="/contacto">Contáctanos</a>
+      <a class="btn btn--ghost-light btn--lg" [href]="'tel:+' + site.phoneRaw">{{ site.phone }}</a>
+    </div>
+  </div>
+</section>

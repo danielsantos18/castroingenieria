@@ -1,0 +1,127 @@
+@use 'abstracts' as *;
+
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  height: 100%;
+  padding: space('xl') space('lg') space('lg');
+  text-align: center;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  // Franja de acento superior que se revela al pasar el cursor.
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color-primary, $color-accent);
+    transform: scaleX(0);
+    transition: transform $transition-base;
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .team-card__avatar {
+      border-color: $color-accent;
+    }
+
+    .team-card__cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__avatar {
+    @include flex-center;
+    width: 124px;
+    height: 124px;
+    margin-bottom: space('sm');
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    color: $color-white;
+    border: 4px solid var(--surface-card);
+    box-shadow: 0 0 0 1px var(--border), $shadow-sm;
+    transition: border-color $transition-base;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__initials {
+    font-family: $font-heading;
+    font-size: 2.25rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.05em;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    color: var(--text-heading);
+  }
+
+  &__role {
+    position: relative;
+    padding-top: 0.6rem;
+    color: $color-accent;
+    font-weight: $font-weight-medium;
+    font-size: 0.95rem;
+
+    // Pequeño separador decorativo sobre el cargo.
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 2px;
+      background-color: var(--border);
+      border-radius: $radius-pill;
+    }
+  }
+
+  // Llamada a la acción que aparece al enfocar / pasar el cursor.
+  &__cta {
+    margin-top: space('xs');
+    font-size: 0.8rem;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-brand);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity $transition-base, transform $transition-base;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-card__cta {
+    transition: none;
+  }
+}

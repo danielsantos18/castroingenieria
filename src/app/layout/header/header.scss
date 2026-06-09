@@ -1,0 +1,196 @@
+@use 'abstracts' as *;
+
+:host {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  display: block;
+}
+
+.header {
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow $transition-base,
+    background-color $transition-base;
+
+  &--scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space('md');
+    min-height: 72px;
+  }
+
+  &__logo {
+    width: auto;
+    height: 44px;
+
+    @include respond-to('md') {
+      height: 52px;
+    }
+  }
+
+  // -- Herramientas (tema + hamburguesa) -------------------------------------
+  &__tools {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: var(--text-heading);
+    background-color: var(--surface-alt);
+    border: 1px solid var(--border);
+    transition:
+      color $transition-base,
+      background-color $transition-base,
+      transform $transition-base;
+
+    &:hover {
+      color: $color-accent;
+      transform: rotate(15deg) scale(1.05);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  // -- Botón hamburguesa (visible solo en móvil) -----------------------------
+  &__toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to('lg') {
+      display: none;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &__toggle-bar,
+  &__toggle-bar::before,
+  &__toggle-bar::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background-color: var(--text-heading);
+    border-radius: $radius-pill;
+    transition: transform $transition-base, opacity $transition-base;
+  }
+
+  &__toggle-bar {
+    &::before {
+      transform: translateY(-8px);
+    }
+    &::after {
+      transform: translateY(8px);
+    }
+
+    &.is-open {
+      background-color: transparent;
+
+      &::before {
+        transform: rotate(45deg);
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  // -- Navegación ------------------------------------------------------------
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: space('lg');
+
+    // Móvil: panel desplegable
+    @media (max-width: 991.98px) {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: space('sm');
+      padding: space('md');
+      background-color: var(--surface);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform $transition-base, opacity $transition-base, visibility $transition-base;
+
+      &.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: space('xs');
+
+    @include respond-to('lg') {
+      flex-direction: row;
+      gap: space('md');
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.25rem;
+    font-weight: $font-weight-medium;
+    color: var(--text-heading);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: $color-accent;
+      transition: width $transition-base;
+    }
+
+    &:hover,
+    &.is-active {
+      color: var(--text-brand);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__cta {
+    align-self: stretch;
+
+    @include respond-to('lg') {
+      align-self: auto;
+    }
+  }
+}

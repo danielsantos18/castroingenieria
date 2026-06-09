@@ -1,0 +1,75 @@
+// =============================================================================
+// Design tokens (SCSS) — fuente única de verdad de la marca Castro Ingeniería.
+// Se exponen también como custom properties en base/_root.scss para uso runtime.
+// =============================================================================
+
+// -- Paleta de marca (tomada del logo: azul marino + naranja) -----------------
+$color-primary: #1f3a8a; // azul marino corporativo
+$color-primary-dark: #16264f; // hover / fondos oscuros
+$color-primary-light: #2e51b8;
+
+$color-accent: #f5a623; // naranja del logo
+$color-accent-dark: #e08e0b; // hover
+
+// -- Neutros ------------------------------------------------------------------
+$color-heading: #16213e; // titulares
+$color-text: #565872; // texto cuerpo
+$color-muted: #7a7a7a; // texto secundario
+$color-border: #e6e8ef;
+$color-bg: #ffffff;
+$color-bg-alt: #f4f5f8; // secciones alternas
+$color-white: #ffffff;
+$color-black: #0d1320;
+
+// -- Tipografía ---------------------------------------------------------------
+$font-body: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-heading: 'Roboto Slab', Georgia, 'Times New Roman', serif;
+
+$font-size-base: 1rem; // 16px
+$line-height-base: 1.8;
+$line-height-heading: 1.25;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// -- Escala de espaciado (base 8px) -------------------------------------------
+$spacing: (
+  'xs': 0.5rem,
+  'sm': 1rem,
+  'md': 1.5rem,
+  'lg': 2.5rem,
+  'xl': 4rem,
+  '2xl': 6rem,
+);
+
+// -- Layout -------------------------------------------------------------------
+$container-max: 1200px;
+$container-narrow: 860px;
+$container-padding: 1.25rem;
+
+// -- Bordes y sombras ---------------------------------------------------------
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-pill: 999px;
+
+$shadow-sm: 0 2px 8px rgba(22, 33, 62, 0.06);
+$shadow-md: 0 10px 30px rgba(22, 33, 62, 0.1);
+$shadow-lg: 0 20px 50px rgba(22, 33, 62, 0.15);
+
+// -- Transiciones -------------------------------------------------------------
+$transition-base: 0.25s ease;
+
+// -- Breakpoints (mobile-first) ----------------------------------------------
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+);
+
+// -- Capas (z-index) ----------------------------------------------------------
+$z-header: 1000;
+$z-overlay: 1100;
+$z-modal: 1200;

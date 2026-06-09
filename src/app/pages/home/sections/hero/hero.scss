@@ -1,0 +1,65 @@
+@use 'abstracts' as *;
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(520px, 80vh, 760px);
+  color: $color-white;
+  background:
+    linear-gradient(
+      100deg,
+      rgba($color-primary-dark, 0.94) 0%,
+      rgba($color-primary-dark, 0.8) 38%,
+      rgba($color-primary, 0.5) 70%,
+      rgba($color-primary, 0.35) 100%
+    ),
+    url('/images/brand/banner-hero.png') center / cover no-repeat;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba($color-accent, 0.18), transparent 55%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  max-width: 680px;
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  margin-bottom: space('sm');
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-white;
+  background-color: rgba($color-accent, 0.9);
+  border-radius: $radius-pill;
+}
+
+.hero__title {
+  color: $color-white;
+  margin-bottom: space('sm');
+}
+
+.hero__lead {
+  max-width: 52ch;
+  margin-bottom: space('lg');
+  font-size: 1.125rem;
+  color: rgba($color-white, 0.9);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('sm');
+}

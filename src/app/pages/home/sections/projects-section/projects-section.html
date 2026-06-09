@@ -1,0 +1,21 @@
+<section class="section section--alt" id="proyectos">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Casos de éxito</span>
+      <h2 class="section-title">Nuestros Proyectos</h2>
+      <p class="section-subtitle">
+        Una muestra de las obras que hemos ejecutado para nuestros clientes.
+      </p>
+    </header>
+
+    <div class="projects-grid">
+      @for (project of projects; track project.slug; let i = $index) {
+        <app-project-card [project]="project" appReveal [revealDelay]="i * 90" />
+      }
+    </div>
+
+    <div class="projects-section__cta">
+      <a class="btn btn--outline" routerLink="/proyectos">Ver todos los proyectos</a>
+    </div>
+  </div>
+</section>

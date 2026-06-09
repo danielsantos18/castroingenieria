@@ -1,0 +1,53 @@
+@use 'abstracts' as *;
+
+.page-banner {
+  padding-block: space('xl');
+  background:
+    linear-gradient(120deg, rgba($color-primary-dark, 0.92), rgba($color-primary, 0.85)),
+    url('/images/services/construccion-industrial.png') center / cover no-repeat;
+  color: $color-white;
+  text-align: center;
+
+  &__title {
+    color: $color-white;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: space('xs');
+    font-size: 0.95rem;
+    color: rgba($color-white, 0.8);
+
+    a:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.placeholder {
+  text-align: center;
+
+  &__badge {
+    display: inline-block;
+    margin-bottom: space('sm');
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-accent;
+    background-color: rgba($color-accent, 0.12);
+    border-radius: $radius-pill;
+  }
+
+  &__title {
+    margin-bottom: space('sm');
+  }
+
+  &__text {
+    margin-bottom: space('lg');
+    color: var(--text-muted);
+  }
+}

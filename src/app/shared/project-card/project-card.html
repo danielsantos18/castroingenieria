@@ -1,0 +1,12 @@
+<article class="project-card">
+  <img
+    class="project-card__img"
+    [src]="project().image"
+    [alt]="project().title"
+    loading="lazy"
+  />
+  <div class="project-card__overlay">
+    <span class="project-card__category">{{ project().category }}</span>
+    <h3 class="project-card__title">{{ project().title }}</h3>
+  </div>
+</article>

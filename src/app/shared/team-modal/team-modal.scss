@@ -1,0 +1,264 @@
+@use 'abstracts' as *;
+
+// -- Fondo / overlay ----------------------------------------------------------
+.team-modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: space('md');
+  background: rgba(13, 19, 32, 0.6);
+  backdrop-filter: blur(4px);
+  animation: team-modal-overlay-in 0.25s ease forwards;
+
+  &--leaving {
+    animation: team-modal-overlay-out 0.2s ease forwards;
+
+    .team-modal__panel {
+      animation: team-modal-panel-out 0.2s ease forwards;
+    }
+  }
+}
+
+// -- Panel --------------------------------------------------------------------
+.team-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(100vh - #{space('lg')});
+  overflow-y: auto;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-lg);
+  animation: team-modal-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  // Franja de acento de marca en el borde superior.
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color-primary, $color-accent);
+  }
+}
+
+// -- Botón de cierre ----------------------------------------------------------
+.team-modal__close {
+  position: absolute;
+  top: space('sm');
+  right: space('sm');
+  @include flex-center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: $radius-pill;
+  background-color: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color $transition-base, border-color $transition-base, transform $transition-base;
+
+  &:hover {
+    color: $color-accent;
+    border-color: $color-accent;
+    transform: rotate(90deg);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -- Encabezado ---------------------------------------------------------------
+.team-modal__header {
+  display: flex;
+  align-items: center;
+  gap: space('md');
+  padding: space('lg') space('lg') space('md');
+
+  @include respond-to('sm') {
+    padding-right: space('xl');
+  }
+}
+
+.team-modal__avatar {
+  @include flex-center;
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, $color-primary, $color-primary-light);
+  color: $color-white;
+  border: 4px solid var(--surface-card);
+  box-shadow: 0 0 0 1px var(--border), $shadow-sm;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.team-modal__initials {
+  font-family: $font-heading;
+  font-size: 1.9rem;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.05em;
+}
+
+.team-modal__heading {
+  min-width: 0;
+}
+
+.team-modal__name {
+  font-size: 1.45rem;
+  line-height: $line-height-heading;
+  color: var(--text-heading);
+}
+
+.team-modal__role {
+  margin-top: 0.15rem;
+  color: $color-accent;
+  font-weight: $font-weight-medium;
+}
+
+.team-modal__badge {
+  display: inline-block;
+  margin-top: space('xs');
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: $font-weight-medium;
+  color: var(--text-brand);
+  background-color: rgba($color-primary, 0.1);
+  border-radius: $radius-pill;
+}
+
+// -- Cuerpo -------------------------------------------------------------------
+.team-modal__body {
+  padding: 0 space('lg') space('lg');
+}
+
+.team-modal__bio {
+  color: var(--text-body);
+  font-size: 0.97rem;
+}
+
+.team-modal__block {
+  margin-top: space('md');
+  padding-top: space('md');
+  border-top: 1px solid var(--border);
+}
+
+.team-modal__block-title {
+  margin-bottom: space('sm');
+  font-size: 0.8rem;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.team-modal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.team-modal__chip {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: $radius-pill;
+}
+
+.team-modal__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.team-modal__contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  svg {
+    flex-shrink: 0;
+    color: var(--text-brand);
+  }
+
+  &:hover {
+    color: $color-accent;
+
+    svg {
+      color: $color-accent;
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -- Animaciones --------------------------------------------------------------
+@keyframes team-modal-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes team-modal-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes team-modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes team-modal-panel-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-modal,
+  .team-modal--leaving,
+  .team-modal__panel,
+  .team-modal--leaving .team-modal__panel,
+  .team-modal__close {
+    animation: none;
+    transition: none;
+  }
+}

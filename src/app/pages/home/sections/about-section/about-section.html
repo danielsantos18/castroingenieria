@@ -1,0 +1,52 @@
+<section class="section section--alt" id="nosotros">
+  <div class="container about">
+    <div class="about__media" appReveal>
+      <img
+        class="about__img"
+        src="images/services/obras-civiles.png"
+        alt="Equipo de Castros Ingeniería en obra"
+        loading="lazy"
+      />
+      <div class="about__badge">
+        <span class="about__badge-icon" aria-hidden="true">★</span>
+        <span class="about__badge-label">Calidad y<br />seguridad</span>
+      </div>
+    </div>
+
+    <div class="about__content" appReveal [revealDelay]="150">
+      <header class="section-head section-head--start">
+        <span class="section-eyebrow">Nosotros</span>
+        <h2 class="section-title">¿Quiénes somos?</h2>
+      </header>
+      <p class="about__text">{{ site.about }}</p>
+      <p class="about__text">
+        Contamos con personal capacitado y con las herramientas y equipos necesarios para trabajar
+        con calidad, responsabilidad y, sobre todo, cumpliendo con las normas de seguridad. El
+        cliente es nuestro mayor tesoro, por eso nos esmeramos en satisfacer sus necesidades de
+        manera oportuna.
+      </p>
+
+      <div class="about__vision">
+        <span class="about__vision-label">Nuestra visión</span>
+        <p>{{ site.vision }}</p>
+      </div>
+
+      <ul class="about__stats">
+        @for (stat of stats; track stat.label) {
+          <li class="about__stat">
+            <span class="about__stat-value">
+              <app-count-up
+                [value]="stat.value"
+                [prefix]="stat.prefix ?? ''"
+                [suffix]="stat.suffix ?? ''"
+              />
+            </span>
+            <span class="about__stat-label">{{ stat.label }}</span>
+          </li>
+        }
+      </ul>
+
+      <a class="btn btn--primary" routerLink="/nosotros">Más sobre nosotros</a>
+    </div>
+  </div>
+</section>

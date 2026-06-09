@@ -1,0 +1,18 @@
+<article class="service-card" [id]="service().slug">
+  <div class="service-card__media">
+    <img
+      class="service-card__img"
+      [src]="service().image"
+      [alt]="service().title"
+      loading="lazy"
+    />
+  </div>
+  <div class="service-card__body">
+    <h3 class="service-card__title">{{ service().title }}</h3>
+    <p class="service-card__summary">{{ service().summary }}</p>
+    <a class="service-card__link" routerLink="/servicios" [fragment]="service().slug">
+      Conoce más
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

@@ -1,0 +1,50 @@
+@use 'abstracts' as *;
+
+.scroll-top {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: $z-header;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: $color-white;
+  background-color: $color-accent;
+  box-shadow: $shadow-md;
+
+  // Oculto por defecto, aparece al hacer scroll.
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity $transition-base,
+    visibility $transition-base,
+    transform $transition-base,
+    background-color $transition-base;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background-color: $color-accent-dark;
+    transform: translateY(-4px);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  svg {
+    transition: transform $transition-base;
+  }
+
+  &:hover svg {
+    transform: translateY(-2px);
+  }
+}

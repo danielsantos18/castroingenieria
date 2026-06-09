@@ -1,0 +1,26 @@
+<section class="section section--alt" id="equipo">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Quiénes somos</span>
+      <h2 class="section-title">Nuestro Equipo</h2>
+      <p class="section-subtitle">
+        Profesionales comprometidos con la calidad y el cumplimiento en cada proyecto.
+      </p>
+    </header>
+
+    <div class="team-grid">
+      @for (member of team; track member.name; let i = $index) {
+        <app-team-card
+          [member]="member"
+          (select)="openMember($event)"
+          appReveal
+          [revealDelay]="i * 90"
+        />
+      }
+    </div>
+  </div>
+
+  @if (selected(); as member) {
+    <app-team-modal [member]="member" (close)="closeModal()" />
+  }
+</section>

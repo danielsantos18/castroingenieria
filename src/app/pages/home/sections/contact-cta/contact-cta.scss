@@ -1,0 +1,38 @@
+@use 'abstracts' as *;
+
+.cta {
+  padding-block: space('xl');
+  background:
+    linear-gradient(120deg, $color-primary-dark, $color-primary);
+  color: $color-white;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: space('lg');
+
+    @include respond-to('lg') {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    color: $color-white;
+    margin-bottom: space('xs');
+  }
+
+  &__subtitle {
+    color: rgba($color-white, 0.85);
+    max-width: 52ch;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('sm');
+    flex-shrink: 0;
+  }
+}

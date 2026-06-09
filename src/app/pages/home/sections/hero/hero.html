@@ -1,0 +1,17 @@
+<section class="hero">
+  <div class="hero__overlay"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="hero__eyebrow" appReveal>Castros Ingeniería SAS</span>
+      <h1 class="hero__title" appReveal [revealDelay]="120">{{ site.tagline }}</h1>
+      <p class="hero__lead" appReveal [revealDelay]="240">
+        Contamos con experiencia comprobada en el diseño, planeación y ejecución de proyectos de
+        construcción.
+      </p>
+      <div class="hero__actions" appReveal [revealDelay]="360">
+        <a class="btn btn--accent btn--lg" routerLink="/servicios">Conoce más</a>
+        <a class="btn btn--ghost-light btn--lg" routerLink="/contacto">Contáctanos</a>
+      </div>
+    </div>
+  </div>
+</section>

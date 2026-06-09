@@ -1,0 +1,53 @@
+@use '../abstracts' as *;
+
+// Bloque de sección estándar con espaciado vertical consistente.
+.section {
+  padding-block: space('xl');
+
+  @include respond-to('lg') {
+    padding-block: space('2xl');
+  }
+
+  &--alt {
+    background-color: var(--surface-alt);
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: rgba($color-white, 0.85);
+  }
+}
+
+// Cabecera de sección (eyebrow + título + descripción), centrada por defecto.
+.section-head {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: space('lg');
+  text-align: center;
+
+  &--start {
+    margin-inline: 0;
+    text-align: start;
+  }
+}
+
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: space('xs');
+  font-family: $font-body;
+  font-size: 0.875rem;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-accent;
+}
+
+.section-title {
+  margin-bottom: space('sm');
+  color: var(--text-heading);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+}
