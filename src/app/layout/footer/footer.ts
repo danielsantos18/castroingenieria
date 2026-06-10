@@ -15,7 +15,7 @@ export class Footer {
   protected readonly site = SITE_INFO;
   protected readonly socials = SOCIALS;
 
-  /** Enlaces rápidos: excluye Inicio y la sección de Proyectos (oculta). */
+  /** Enlaces rápidos: excluye la sección de Proyectos (oculta). */
   protected readonly quickLinks = NAV_LINKS.filter(
     (link) => link.path !== '/proyectos',
   );
