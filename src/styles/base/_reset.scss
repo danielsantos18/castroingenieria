@@ -13,6 +13,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  // Quita el resaltado azul que pinta el navegador móvil al tocar enlaces/botones.
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
