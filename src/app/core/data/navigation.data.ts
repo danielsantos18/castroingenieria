@@ -10,6 +10,6 @@ export const NAV_LINKS: readonly NavLink[] = [
   { label: 'Nosotros', path: '/nosotros' },
   { label: 'Servicios', path: '/servicios' },
   { label: 'Proyectos', path: '/proyectos' },
-  { label: 'Nuestro Equipo', path: '/equipo' },
+  //{ label: 'Nuestro Equipo', path: '/equipo' },
   { label: 'Contáctanos', path: '/contacto' },
 ];

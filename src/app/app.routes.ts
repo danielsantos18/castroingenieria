@@ -11,15 +11,13 @@ export const routes: Routes = [
   },
   {
     path: 'nosotros',
-    loadComponent: () => import('./pages/placeholder/placeholder').then((m) => m.Placeholder),
+    loadComponent: () => import('./pages/about/about').then((m) => m.About),
     title: `Nosotros — ${BRAND}`,
-    data: { heading: 'Nosotros' },
   },
   {
     path: 'servicios',
-    loadComponent: () => import('./pages/placeholder/placeholder').then((m) => m.Placeholder),
+    loadComponent: () => import('./pages/services/services').then((m) => m.Services),
     title: `Servicios — ${BRAND}`,
-    data: { heading: 'Servicios' },
   },
   {
     path: 'proyectos',
@@ -35,9 +33,8 @@ export const routes: Routes = [
   },
   {
     path: 'contacto',
-    loadComponent: () => import('./pages/placeholder/placeholder').then((m) => m.Placeholder),
+    loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
     title: `Contáctanos — ${BRAND}`,
-    data: { heading: 'Contáctanos' },
   },
   {
     path: '**',

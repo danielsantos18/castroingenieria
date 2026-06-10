@@ -46,11 +46,19 @@ p {
 
 a {
   color: $color-primary;
+  text-decoration: none;
   transition: color $transition-base;
 
   &:hover {
     color: $color-accent;
   }
+}
+
+// Teléfonos y correos: nunca subrayados ni con estilo de enlace del navegador
+// (algunos navegadores/móviles autoenlazan y subrayan los números).
+a[href^='tel:'],
+a[href^='mailto:'] {
+  text-decoration: none;
 }
 
 strong {

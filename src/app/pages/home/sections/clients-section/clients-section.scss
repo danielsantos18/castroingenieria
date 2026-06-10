@@ -52,6 +52,27 @@
   }
 }
 
+// Texto ampliado de colaboraciones (solo en la página Nosotros).
+.clients-detail {
+  max-width: $container-narrow;
+  margin: space('lg') auto 0;
+  text-align: center;
+
+  p {
+    margin-bottom: space('sm');
+    color: var(--text-body);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    color: var(--text-brand);
+    font-weight: $font-weight-medium;
+  }
+}
+
 @keyframes clients-marquee {
   to {
     transform: translateX(-50%);

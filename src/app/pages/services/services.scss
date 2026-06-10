@@ -1,0 +1,61 @@
+@use 'abstracts' as *;
+
+.page-banner {
+  padding-block: space('xl');
+  background:
+    linear-gradient(120deg, rgba($color-primary-dark, 0.92), rgba($color-primary, 0.85)),
+    url('/images/services/construccion-industrial.png') center / cover no-repeat;
+  color: $color-white;
+  text-align: center;
+
+  &__title {
+    color: $color-white;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: space('xs');
+    font-size: 0.95rem;
+    color: rgba($color-white, 0.8);
+
+    a:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.services-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('md');
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// -- Llamada a la acción al final del listado --------------------------------
+.services-page__cta {
+  margin-top: space('xl');
+  padding: space('lg');
+  text-align: center;
+  background: linear-gradient(135deg, var(--surface-alt), var(--surface-card));
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+
+  &-title {
+    color: var(--text-heading);
+  }
+
+  &-text {
+    max-width: 520px;
+    margin: space('xs') auto space('md');
+    color: var(--text-muted);
+  }
+}

@@ -18,12 +18,41 @@
     .service-card__img {
       transform: scale(1.05);
     }
+
+    .service-card__media--icon::before {
+      transform: scale(1.15) rotate(8deg);
+      opacity: 1;
+    }
+
+    .service-card__icon {
+      transform: translateY(-4px);
+      color: $color-accent;
+    }
   }
 
   &__media {
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background-color: var(--surface-alt);
+
+    // Variante sin imagen: icono centrado sobre fondo con halo de marca.
+    &--icon {
+      @include flex-center;
+      position: relative;
+      background: linear-gradient(135deg, var(--surface-alt), var(--surface-card));
+
+      // Halo radial que se ilumina al pasar el cursor.
+      &::before {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba($color-primary, 0.16), transparent 70%);
+        opacity: 0.6;
+        transition: transform $transition-base, opacity $transition-base;
+      }
+    }
   }
 
   &__img {
@@ -31,6 +60,15 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+  }
+
+  &__icon {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 64px;
+    color: var(--text-brand);
+    transition: transform $transition-base, color $transition-base;
   }
 
   &__body {

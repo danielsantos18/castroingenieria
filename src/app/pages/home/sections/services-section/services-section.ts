@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SERVICES } from '../../../../core/data/services.data';
+import { FEATURED_SERVICES } from '../../../../core/data/services.data';
 import { ServiceCard } from '../../../../shared/service-card/service-card';
 import { Reveal } from '../../../../shared/directives/reveal';
 
@@ -12,5 +12,5 @@ import { Reveal } from '../../../../shared/directives/reveal';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServicesSection {
-  protected readonly services = SERVICES;
+  protected readonly services = FEATURED_SERVICES;
 }

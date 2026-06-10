@@ -1,0 +1,349 @@
+@use 'abstracts' as *;
+
+// -- Banner -------------------------------------------------------------------
+.page-banner {
+  padding-block: space('xl');
+  background:
+    linear-gradient(120deg, rgba($color-primary-dark, 0.92), rgba($color-primary, 0.85)),
+    url('/images/services/obras-civiles.png') center / cover no-repeat;
+  color: $color-white;
+  text-align: center;
+
+  &__title {
+    color: $color-white;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: space('xs');
+    font-size: 0.95rem;
+    color: rgba($color-white, 0.8);
+
+    a:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+// -- Quiénes somos ------------------------------------------------------------
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('xl');
+  align-items: center;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__media {
+    position: relative;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: -$container-padding;
+    right: -$container-padding;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: space('sm') space('md');
+    background-color: $color-accent;
+    color: $color-primary-dark;
+    border-radius: $radius-md;
+    box-shadow: $shadow-md;
+
+    @media (max-width: 575.98px) {
+      right: space('sm');
+      bottom: space('sm');
+    }
+  }
+
+  &__badge-icon {
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  &__badge-label {
+    font-size: 0.9rem;
+    font-weight: $font-weight-medium;
+    line-height: 1.2;
+  }
+
+  &__text {
+    margin-bottom: space('sm');
+    font-size: 1.0625rem;
+  }
+}
+
+// -- Estadísticas -------------------------------------------------------------
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('md');
+  text-align: center;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: space('md');
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &__value {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: $font-weight-bold;
+    color: var(--text-brand);
+    line-height: 1;
+  }
+
+  &__label {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+}
+
+// -- Video (texto + reproductor a un lado) ------------------------------------
+.about-video {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('lg');
+  align-items: center;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1.1fr;
+    gap: space('xl');
+  }
+
+  &__text {
+    margin-bottom: space('md');
+    color: var(--text-body);
+    font-size: 1.0625rem;
+  }
+
+  &__list {
+    margin-bottom: space('lg');
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+
+    li {
+      position: relative;
+      padding-left: 1.9rem;
+      color: var(--text-body);
+
+      // Check de marca antes de cada ítem.
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.15rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        background: $color-accent
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316264f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E")
+          center / 0.8rem no-repeat;
+      }
+    }
+  }
+
+  // Marco del reproductor con franja de acento y relación 16:9.
+  &__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    background-color: #000;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 4px;
+      z-index: 1;
+      background: linear-gradient(90deg, $color-primary, $color-accent);
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+  }
+}
+
+// -- Misión y Visión ----------------------------------------------------------
+.about-mv {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('md');
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__card {
+    position: relative;
+    padding: space('lg');
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-block: 0;
+      left: 0;
+      width: 4px;
+      background: linear-gradient(180deg, $color-primary, $color-accent);
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: space('sm');
+    border-radius: $radius-md;
+    color: var(--text-brand);
+    background-color: rgba($color-primary, 0.1);
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+    color: var(--text-heading);
+  }
+
+  &__text {
+    color: var(--text-body);
+  }
+}
+
+// -- Valores ------------------------------------------------------------------
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space('md');
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__card {
+    padding: space('lg');
+    text-align: center;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+
+      .about-values__icon {
+        background-color: $color-accent;
+        color: $color-primary-dark;
+        transform: rotate(-6deg) scale(1.05);
+      }
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto space('sm');
+    border-radius: 50%;
+    color: $color-white;
+    background: linear-gradient(135deg, $color-primary, $color-primary-light);
+    transition: transform $transition-base, background-color $transition-base, color $transition-base;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+    color: var(--text-heading);
+  }
+
+  &__text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+}
+
+// -- CTA ----------------------------------------------------------------------
+.about-cta {
+  padding: space('xl') space('lg');
+  text-align: center;
+  background: linear-gradient(135deg, var(--surface-card), var(--surface-alt));
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+
+  &__title {
+    color: var(--text-heading);
+  }
+
+  &__text {
+    max-width: 540px;
+    margin: space('sm') auto space('md');
+    color: var(--text-muted);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: space('sm');
+  }
+}

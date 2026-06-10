@@ -1,0 +1,41 @@
+<section class="page-banner">
+  <div class="container">
+    <h1 class="page-banner__title">Nuestros Servicios</h1>
+    <nav class="page-banner__breadcrumb" aria-label="Ruta de navegación">
+      <a routerLink="/">Inicio</a>
+      <span aria-hidden="true">/</span>
+      <span>Servicios</span>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Lo que hacemos</span>
+      <h2 class="section-title">Soluciones integrales de ingeniería</h2>
+      <p class="section-subtitle">
+        Acompañamos cada proyecto del sector industrial con experiencia, calidad y cumplimiento.
+      </p>
+    </header>
+
+    <div class="services-page-grid">
+      @for (service of services; track service.slug; let i = $index) {
+        <app-service-card
+          [service]="service"
+          [showLink]="false"
+          appReveal
+          [revealDelay]="(i % 3) * 90"
+        />
+      }
+    </div>
+
+    <div class="services-page__cta" appReveal>
+      <h3 class="services-page__cta-title">¿Tienes un proyecto en mente?</h3>
+      <p class="services-page__cta-text">
+        Cuéntanos qué necesitas y te ayudamos a materializarlo con la mejor solución.
+      </p>
+      <a class="btn btn--primary" routerLink="/" fragment="contacto">Contáctanos</a>
+    </div>
+  </div>
+</section>

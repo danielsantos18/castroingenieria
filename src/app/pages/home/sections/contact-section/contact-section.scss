@@ -54,11 +54,11 @@
 
   // Teléfono y correo en el azul oscuro de la marca.
   a {
-    color: var(--text-brand);
+    color: var(--text-body);
     font-weight: $font-weight-medium;
 
     &:hover {
-      color: $color-accent;
+      color: $color-primary;
     }
   }
 }

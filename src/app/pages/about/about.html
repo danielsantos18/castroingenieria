@@ -1,0 +1,217 @@
+<!-- Banner -->
+<section class="page-banner">
+  <div class="container">
+    <h1 class="page-banner__title">Nosotros</h1>
+    <nav class="page-banner__breadcrumb" aria-label="Ruta de navegación">
+      <a routerLink="/">Inicio</a>
+      <span aria-hidden="true">/</span>
+      <span>Nosotros</span>
+    </nav>
+  </div>
+</section>
+
+<!-- Quiénes somos -->
+<section class="section">
+  <div class="container about-intro">
+    <div class="about-intro__media" appReveal>
+      <img
+        class="about-intro__img"
+        src="images/services/obras-civiles.png"
+        alt="Equipo de Castros Ingeniería en obra"
+        loading="lazy"
+      />
+      <div class="about-intro__badge">
+        <span class="about-intro__badge-icon" aria-hidden="true">★</span>
+        <span class="about-intro__badge-label">Calidad y<br />seguridad</span>
+      </div>
+    </div>
+
+    <div class="about-intro__content" appReveal [revealDelay]="150">
+      <header class="section-head section-head--start">
+        <span class="section-eyebrow">Quiénes somos</span>
+        <h2 class="section-title">{{ site.companyName }}</h2>
+      </header>
+      <p class="about-intro__text">{{ site.about }}</p>
+      <p class="about-intro__text">
+        Contamos con personal capacitado y con las herramientas y equipos necesarios para trabajar
+        con calidad, responsabilidad y, sobre todo, cumpliendo con las normas de seguridad. El
+        cliente es nuestro mayor tesoro, por eso nos esmeramos en satisfacer sus necesidades de
+        manera oportuna.
+      </p>
+      <p class="about-intro__text">
+        En Castros Ingeniería nos enorgullece la diversidad de obras que hemos llevado a cabo con
+        éxito, destacando en construcción, pintura, mantenimientos industriales, carpintería, entre
+        otros. Nos distinguimos por cumplir con estándares de calidad rigurosos y ofrecer soluciones
+        efectivas que superan las expectativas.
+      </p>
+      <p class="about-intro__text">
+        Te invitamos a ser parte de nuestra historia de éxitos. ¿Tienes un proyecto en mente?
+        Contáctanos hoy mismo y convierte tu visión en realidad con el respaldo de nuestro equipo
+        altamente capacitado y comprometido. Juntos construyamos un futuro sólido, lleno de logros y
+        satisfacción. En Castros Ingeniería estamos listos para hacer realidad tus proyectos con
+        calidad, experiencia y dedicación.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Estadísticas -->
+<section class="section section--alt">
+  <div class="container">
+    <ul class="about-stats" appReveal>
+      @for (stat of stats; track stat.label) {
+        <li class="about-stats__item">
+          <span class="about-stats__value">
+            <app-count-up
+              [value]="stat.value"
+              [prefix]="stat.prefix ?? ''"
+              [suffix]="stat.suffix ?? ''"
+            />
+          </span>
+          <span class="about-stats__label">{{ stat.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Video corporativo -->
+<section class="section">
+  <div class="container about-video">
+    <div class="about-video__content" appReveal>
+      <header class="section-head section-head--start">
+        <span class="section-eyebrow">Conócenos</span>
+        <h2 class="section-title">Nuestra empresa en acción</h2>
+      </header>
+      <p class="about-video__text">
+        Un vistazo a nuestro trabajo, nuestro equipo y los proyectos que materializamos día a día.
+        Conoce de cerca cómo convertimos cada idea en una solución real para el sector industrial.
+      </p>
+      <ul class="about-video__list">
+        <li>Proyectos ejecutados con calidad y seguridad</li>
+        <li>Personal capacitado y equipos adecuados</li>
+        <li>Compromiso y cumplimiento en cada entrega</li>
+      </ul>
+      <a class="btn btn--primary" routerLink="/servicios">Ver servicios</a>
+    </div>
+
+    <div class="about-video__media" appReveal [revealDelay]="150">
+      <div class="about-video__frame">
+        <iframe
+          src="https://www.youtube.com/embed/sk7sfYG0a2A"
+          title="Video corporativo — Castros Ingeniería SAS"
+          loading="lazy"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Misión y Visión -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="about-mv">
+      <article class="about-mv__card" appReveal>
+        <div class="about-mv__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="5" />
+            <circle cx="12" cy="12" r="1" />
+          </svg>
+        </div>
+        <h3 class="about-mv__title">Misión</h3>
+        <p class="about-mv__text">{{ site.mission }}</p>
+      </article>
+
+      <article class="about-mv__card" appReveal [revealDelay]="150">
+        <div class="about-mv__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </div>
+        <h3 class="about-mv__title">Visión</h3>
+        <p class="about-mv__text">{{ site.vision }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Valores -->
+<section class="section">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="section-eyebrow">Lo que nos define</span>
+      <h2 class="section-title">Nuestros Valores</h2>
+      <p class="section-subtitle">
+        Los principios con los que afrontamos cada proyecto y cada relación con nuestros clientes.
+      </p>
+    </header>
+
+    <div class="about-values">
+      @for (value of values; track value.title; let i = $index) {
+        <article class="about-values__card" appReveal [revealDelay]="(i % 3) * 90">
+          <div class="about-values__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
+              @switch (value.icon) {
+                @case ('quality') {
+                  <path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z" />
+                }
+                @case ('safety') {
+                  <path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z" />
+                  <path d="M9 12l2 2 4-4" />
+                }
+                @case ('clock') {
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                }
+                @case ('heart') {
+                  <path d="M12 21s-7-4.4-9.3-8.4C1 9.5 2.6 6 6 6c2 0 3.2 1.2 4 2.3C10.8 7.2 12 6 14 6c3.4 0 5 3.5 3.3 6.6C19 16.6 12 21 12 21z" />
+                }
+                @case ('check') {
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M8 12l3 3 5-6" />
+                }
+                @case ('badge') {
+                  <circle cx="12" cy="9" r="6" />
+                  <path d="M9 14l-1.5 7L12 18l4.5 3L15 14" />
+                }
+              }
+            </svg>
+          </div>
+          <h3 class="about-values__title">{{ value.title }}</h3>
+          <p class="about-values__text">{{ value.text }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Equipo (componente reutilizado) -->
+<app-team-section />
+
+<!-- Clientes (componente reutilizado, con texto ampliado de colaboraciones) -->
+<app-clients-section [detailed]="true" />
+
+<!-- CTA -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="about-cta" appReveal>
+      <h2 class="about-cta__title">¿Listo para materializar tu próximo proyecto?</h2>
+      <p class="about-cta__text">
+        Escríbenos y un asesor te acompañará desde la idea hasta la entrega final.
+      </p>
+      <div class="about-cta__actions">
+        <a class="btn btn--primary" routerLink="/" fragment="contacto">Contáctanos</a>
+        <a class="btn btn--outline" routerLink="/servicios">Ver servicios</a>
+      </div>
+    </div>
+  </div>
+</section>

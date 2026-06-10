@@ -1,18 +1,24 @@
 <article class="service-card" [id]="service().slug">
-  <div class="service-card__media">
-    <img
-      class="service-card__img"
-      [src]="service().image"
-      [alt]="service().title"
-      loading="lazy"
-    />
+  <div class="service-card__media" [class.service-card__media--icon]="!service().image">
+    @if (service().image) {
+      <img
+        class="service-card__img"
+        [src]="service().image"
+        [alt]="service().title"
+        loading="lazy"
+      />
+    } @else if (service().icon) {
+      <app-service-icon class="service-card__icon" [name]="service().icon!" />
+    }
   </div>
   <div class="service-card__body">
     <h3 class="service-card__title">{{ service().title }}</h3>
     <p class="service-card__summary">{{ service().summary }}</p>
-    <a class="service-card__link" routerLink="/servicios" [fragment]="service().slug">
-      Conoce más
-      <span aria-hidden="true">→</span>
-    </a>
+    @if (showLink()) {
+      <a class="service-card__link" routerLink="/servicios" [fragment]="service().slug">
+        Conoce más
+        <span aria-hidden="true">→</span>
+      </a>
+    }
   </div>
 </article>
